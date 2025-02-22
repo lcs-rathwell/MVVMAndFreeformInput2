@@ -27,8 +27,8 @@ class PowerViewModel {
         // First check that the string in providedBase can
         // be converted into a number, then check that the
         // value is more than 0
-        guard let base = Double(providedBase), base > 0 else {
-            recoverySuggestion = "Please provide a positive value for the base of the power."
+        guard let base = Double(providedBase) else {
+            recoverySuggestion = "Please provide a numeric value for the base of the power."
             
             return nil
         }
@@ -36,8 +36,8 @@ class PowerViewModel {
         // Now check that the string in providedExponent can be
         // converted into an integer, and that the value is
         // more than or equal to 1
-        guard let exponent = Int(providedExponent), exponent >= 1 else {
-            recoverySuggestion = "Please provide an integer value of 1 or greater for the exponent."
+        guard let exponent = Int(providedExponent) else {
+            recoverySuggestion = "Please provide an integer value of 0 or greater for the exponent."
             
             return nil
         }
@@ -45,9 +45,8 @@ class PowerViewModel {
         // Now that we know the base and exponent have valid values, return the evaluated power
         recoverySuggestion = "" // No error message
         return Power(base: base, exponent: exponent)
-        
     }
-        
+    
     // MARK: Initializer(s)
     init(
         providedBase: String = "",
